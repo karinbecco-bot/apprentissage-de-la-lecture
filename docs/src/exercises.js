@@ -32,7 +32,7 @@ const pickOne = (list, rand) => list[Math.floor(rand() * list.length)];
 const pickMany = (list, n, rand) => shuffle(list, rand).slice(0, n);
 
 const letterChoice = (v) => ({ id: v.id, letter: v.letter });
-const imageChoice = (w) => ({ id: w.id, image: w.image, audio: w.audio });
+const imageChoice = (w) => ({ id: w.id, image: w.image, picto: w.picto, audio: w.audio });
 
 // Une bonne image + deux images sans la voyelle ; le placement de la bonne réponse change selon la graine.
 function imageSet(vowel, rand) {
@@ -63,7 +63,7 @@ export function buildExercise({ vowel, type, seed }) {
     if (type === 'case-match') return { ...base, prompt: { letter: v.upper, audio: v.sound }, choices, answerId: vowel };
     const alone = WORDS.filter((w) => w.vowels.length === 1 && w.vowels[0] === vowel);
     const w = pickOne(alone, rand);
-    return { ...base, prompt: { image: w.image, audio: w.audio, wordId: w.id }, choices, answerId: vowel };
+    return { ...base, prompt: { image: w.image, picto: w.picto, audio: w.audio, wordId: w.id }, choices, answerId: vowel };
   }
   if (type === 'letter-sound') {
     const others = pickMany(VOWELS.filter((x) => x.id !== vowel), 2, rand);

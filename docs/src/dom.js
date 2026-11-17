@@ -20,3 +20,12 @@ export function onLongPress(el, ms, fn) {
 }
 
 export const AVATARS = ['🐻', '🦊', '🐼', '🐯', '🐸', '🦁', '🐵', '🐰', '🐨', '🦉', '🐙', '🦄'];
+
+// Image d'un mot : pictogramme ARASAAC (images/<picto>.png) ; si le fichier manque, l'émoji de secours.
+export function picture({ picto, image }, size = 100) {
+  if (!picto) return image || '';
+  const img = h('img', { class: 'pic', src: `images/${picto}.png`, alt: '', draggable: 'false' });
+  img.style.width = img.style.height = `${size}px`;
+  img.addEventListener('error', () => img.replaceWith(document.createTextNode(image || '')));
+  return img;
+}

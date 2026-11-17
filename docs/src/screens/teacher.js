@@ -9,6 +9,7 @@ export function render(root, ctx, params = {}) {
   const refresh = () => render(root, ctx);
 
   if (params.picking) return renderPicker(root, ctx);
+  if (params.credits) return renderCredits(root, ctx);
 
   const rows = state.profiles.map((p) => {
     const stage = ctx.stages[p.progress.stage] || { icon: '❓', title: 'Étape inconnue' };
@@ -51,8 +52,19 @@ export function render(root, ctx, params = {}) {
       h('div', { class: 'toolbar' },
         h('button', { class: 'btn', onclick: () => render(root, ctx, { picking: true }) }, '➕ Nouvel élève'),
         h('button', { class: 'btn', onclick: () => download(exportAll(ctx.getState())) }, '⬇️ Exporter'),
+        h('button', { class: 'btn', onclick: () => render(root, ctx, { credits: true }) }, 'ℹ️ Crédits'),
         h('button', { class: 'btn', onclick: () => ctx.navigate('profiles') }, '↩️ Retour')),
       rows.length ? rows : h('p', {}, 'Aucun élève pour le moment.')),
+  );
+}
+
+function renderCredits(root, ctx) {
+  root.replaceChildren(
+    h('main', { class: 'screen teacher' },
+      h('h1', {}, 'ℹ️ Crédits'),
+      h('p', {}, 'Pictogrammes : ARASAAC (https://arasaac.org), propriété du Gouvernement d’Aragon, créés par Sergio Palao. Licence Creative Commons BY-NC-SA : usage non commercial, mention de la source, partage dans les mêmes conditions.'),
+      h('p', {}, 'Cette application est gratuite et destinée à la classe.'),
+      h('button', { class: 'btn', onclick: () => render(root, ctx) }, '↩️ Retour')),
   );
 }
 

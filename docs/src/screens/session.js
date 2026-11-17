@@ -1,5 +1,5 @@
 // Écran de séance : exercice image + voix, tout cliquable, sans texte d'instruction.
-import { h } from '../dom.js';
+import { h, picture } from '../dom.js';
 import { play } from '../audio.js';
 import { createSession } from '../session.js';
 import { updateProfile } from '../profiles.js';
@@ -31,9 +31,9 @@ export function render(root, ctx, { profileId }) {
     if (session.timeUp(Date.now())) return goodbye();
     const ex = session.current();
     const sound = h('button', { class: 'sound', 'aria-label': 'écouter', onclick: () => play(ex.prompt.audio) }, '🔊');
-    const prompt = h('div', { class: 'prompt' }, ex.prompt.image || '', ex.prompt.letter ? h('span', { class: 'letter' }, ex.prompt.letter) : '', sound);
+    const prompt = h('div', { class: 'prompt' }, picture(ex.prompt, 130), ex.prompt.letter ? h('span', { class: 'letter' }, ex.prompt.letter) : '', sound);
     const choices = ex.choices.map((c) =>
-      h('button', { class: c.letter ? 'choice letter' : 'choice', 'data-id': c.id, onclick: () => { if (c.audio) play(c.audio); choose(c.id); } }, c.letter || c.image || '🔊'),
+      h('button', { class: c.letter ? 'choice letter' : 'choice', 'data-id': c.id, onclick: () => { if (c.audio) play(c.audio); choose(c.id); } }, c.letter || picture(c, 110) || '🔊'),
     );
     root.replaceChildren(
       h('main', { class: 'screen' },

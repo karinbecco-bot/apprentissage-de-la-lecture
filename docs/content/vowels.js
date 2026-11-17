@@ -1,4 +1,5 @@
-// Contenu des voyelles : mots, images (émojis provisoires) et voyelles contenues dans chaque mot.
+// Contenu des voyelles : mots, images (picto = fichier images/<picto>.png, arasaac = numéro du pictogramme ARASAAC ;
+// image = émoji de secours) et voyelles contenues dans chaque mot.
 export default {
  "vowels": [
   {
@@ -41,7 +42,9 @@ export default {
    "vowels": [
     "a",
     "i"
-   ]
+   ],
+   "picto": "avion",
+   "arasaac": 2264
   },
   {
    "id": "arbre",
@@ -50,7 +53,9 @@ export default {
    "audio": "word-arbre",
    "vowels": [
     "a"
-   ]
+   ],
+   "picto": "arbre",
+   "arasaac": 3057
   },
   {
    "id": "ananas",
@@ -59,7 +64,9 @@ export default {
    "audio": "word-ananas",
    "vowels": [
     "a"
-   ]
+   ],
+   "picto": "ananas",
+   "arasaac": 2525
   },
   {
    "id": "abeille",
@@ -69,7 +76,9 @@ export default {
    "vowels": [
     "a",
     "é"
-   ]
+   ],
+   "picto": "abeille",
+   "arasaac": 24823
   },
   {
    "id": "araignée",
@@ -79,7 +88,9 @@ export default {
    "vowels": [
     "a",
     "é"
-   ]
+   ],
+   "picto": "araignee",
+   "arasaac": 38275
   },
   {
    "id": "avocat",
@@ -89,7 +100,9 @@ export default {
    "vowels": [
     "a",
     "o"
-   ]
+   ],
+   "picto": "avocat",
+   "arasaac": 2636
   },
   {
    "id": "ail",
@@ -98,7 +111,9 @@ export default {
    "audio": "word-ail",
    "vowels": [
     "a"
-   ]
+   ],
+   "picto": "ail",
+   "arasaac": 2641
   },
   {
    "id": "chat",
@@ -107,7 +122,9 @@ export default {
    "audio": "word-chat",
    "vowels": [
     "a"
-   ]
+   ],
+   "picto": "chat",
+   "arasaac": 7114
   },
   {
    "id": "rat",
@@ -116,7 +133,9 @@ export default {
    "audio": "word-rat",
    "vowels": [
     "a"
-   ]
+   ],
+   "picto": "rat",
+   "arasaac": 2821
   },
   {
    "id": "koala",
@@ -125,7 +144,9 @@ export default {
    "audio": "word-koala",
    "vowels": [
     "a"
-   ]
+   ],
+   "picto": "koala",
+   "arasaac": 2954
   },
   {
    "id": "lama",
@@ -134,7 +155,9 @@ export default {
    "audio": "word-lama",
    "vowels": [
     "a"
-   ]
+   ],
+   "picto": "lama",
+   "arasaac": 9067
   },
   {
    "id": "panda",
@@ -143,7 +166,9 @@ export default {
    "audio": "word-panda",
    "vowels": [
     "a"
-   ]
+   ],
+   "picto": "panda",
+   "arasaac": 2869
   },
   {
    "id": "cinéma",
@@ -154,7 +179,9 @@ export default {
     "i",
     "é",
     "a"
-   ]
+   ],
+   "picto": "cinema",
+   "arasaac": 30387
   },
   {
    "id": "île",
@@ -163,7 +190,9 @@ export default {
    "audio": "word-île",
    "vowels": [
     "i"
-   ]
+   ],
+   "picto": "ile",
+   "arasaac": 2966
   },
   {
    "id": "iguane",
@@ -173,7 +202,9 @@ export default {
    "vowels": [
     "i",
     "a"
-   ]
+   ],
+   "picto": "iguane",
+   "arasaac": 26134
   },
   {
    "id": "lit",
@@ -182,7 +213,9 @@ export default {
    "audio": "word-lit",
    "vowels": [
     "i"
-   ]
+   ],
+   "picto": "lit",
+   "arasaac": 25900
   },
   {
    "id": "riz",
@@ -191,7 +224,9 @@ export default {
    "audio": "word-riz",
    "vowels": [
     "i"
-   ]
+   ],
+   "picto": "riz",
+   "arasaac": 6911
   },
   {
    "id": "souris",
@@ -200,7 +235,9 @@ export default {
    "audio": "word-souris",
    "vowels": [
     "i"
-   ]
+   ],
+   "picto": "souris",
+   "arasaac": 2546
   },
   {
    "id": "ski",
@@ -209,7 +246,9 @@ export default {
    "audio": "word-ski",
    "vowels": [
     "i"
-   ]
+   ],
+   "picto": "ski",
+   "arasaac": 16701
   },
   {
    "id": "kiwi",
@@ -218,7 +257,9 @@ export default {
    "audio": "word-kiwi",
    "vowels": [
     "i"
-   ]
+   ],
+   "picto": "kiwi",
+   "arasaac": 2955
   },
   {
    "id": "taxi",
@@ -228,7 +269,9 @@ export default {
    "vowels": [
     "a",
     "i"
-   ]
+   ],
+   "picto": "taxi",
+   "arasaac": 2580
   },
   {
    "id": "fourmi",
@@ -237,7 +280,9 @@ export default {
    "audio": "word-fourmi",
    "vowels": [
     "i"
-   ]
+   ],
+   "picto": "fourmi",
+   "arasaac": 2425
   },
   {
    "id": "pizza",
@@ -247,7 +292,9 @@ export default {
    "vowels": [
     "i",
     "a"
-   ]
+   ],
+   "picto": "pizza",
+   "arasaac": 2527
   },
   {
    "id": "orange",
@@ -256,7 +303,9 @@ export default {
    "audio": "word-orange",
    "vowels": [
     "o"
-   ]
+   ],
+   "picto": "orange",
+   "arasaac": 2888
   },
   {
    "id": "olive",
@@ -266,7 +315,9 @@ export default {
    "vowels": [
     "o",
     "i"
-   ]
+   ],
+   "picto": "olive",
+   "arasaac": 8316
   },
   {
    "id": "os",
@@ -275,18 +326,9 @@ export default {
    "audio": "word-os",
    "vowels": [
     "o"
-   ]
-  },
-  {
-   "id": "otarie",
-   "text": "otarie",
-   "image": "🦭",
-   "audio": "word-otarie",
-   "vowels": [
-    "o",
-    "a",
-    "i"
-   ]
+   ],
+   "picto": "os",
+   "arasaac": 2972
   },
   {
    "id": "oreille",
@@ -295,7 +337,9 @@ export default {
    "audio": "word-oreille",
    "vowels": [
     "o"
-   ]
+   ],
+   "picto": "oreille",
+   "arasaac": 2871
   },
   {
    "id": "orage",
@@ -305,7 +349,9 @@ export default {
    "vowels": [
     "o",
     "a"
-   ]
+   ],
+   "picto": "orage",
+   "arasaac": 34892
   },
   {
    "id": "moto",
@@ -314,7 +360,9 @@ export default {
    "audio": "word-moto",
    "vowels": [
     "o"
-   ]
+   ],
+   "picto": "moto",
+   "arasaac": 7166
   },
   {
    "id": "vélo",
@@ -324,7 +372,9 @@ export default {
    "vowels": [
     "é",
     "o"
-   ]
+   ],
+   "picto": "velo",
+   "arasaac": 6935
   },
   {
    "id": "auto",
@@ -333,7 +383,9 @@ export default {
    "audio": "word-auto",
    "vowels": [
     "o"
-   ]
+   ],
+   "picto": "auto",
+   "arasaac": 2339
   },
   {
    "id": "piano",
@@ -344,7 +396,9 @@ export default {
     "i",
     "a",
     "o"
-   ]
+   ],
+   "picto": "piano",
+   "arasaac": 2521
   },
   {
    "id": "stylo",
@@ -354,7 +408,9 @@ export default {
    "vowels": [
     "i",
     "o"
-   ]
+   ],
+   "picto": "stylo",
+   "arasaac": 2282
   },
   {
    "id": "radio",
@@ -365,7 +421,9 @@ export default {
     "a",
     "i",
     "o"
-   ]
+   ],
+   "picto": "radio",
+   "arasaac": 26358
   },
   {
    "id": "gâteau",
@@ -375,7 +433,9 @@ export default {
    "vowels": [
     "a",
     "o"
-   ]
+   ],
+   "picto": "gateau",
+   "arasaac": 2502
   },
   {
    "id": "château",
@@ -385,7 +445,9 @@ export default {
    "vowels": [
     "a",
     "o"
-   ]
+   ],
+   "picto": "chateau",
+   "arasaac": 5421
   },
   {
    "id": "chapeau",
@@ -395,7 +457,9 @@ export default {
    "vowels": [
     "a",
     "o"
-   ]
+   ],
+   "picto": "chapeau",
+   "arasaac": 2572
   },
   {
    "id": "bateau",
@@ -405,7 +469,9 @@ export default {
    "vowels": [
     "a",
     "o"
-   ]
+   ],
+   "picto": "bateau",
+   "arasaac": 6932
   },
   {
    "id": "ogre",
@@ -414,7 +480,9 @@ export default {
    "audio": "word-ogre",
    "vowels": [
     "o"
-   ]
+   ],
+   "picto": "ogre",
+   "arasaac": 6160
   },
   {
    "id": "usine",
@@ -424,7 +492,9 @@ export default {
    "vowels": [
     "u",
     "i"
-   ]
+   ],
+   "picto": "usine",
+   "arasaac": 24507
   },
   {
    "id": "tortue",
@@ -434,7 +504,9 @@ export default {
    "vowels": [
     "o",
     "u"
-   ]
+   ],
+   "picto": "tortue",
+   "arasaac": 26503
   },
   {
    "id": "rue",
@@ -443,7 +515,9 @@ export default {
    "audio": "word-rue",
    "vowels": [
     "u"
-   ]
+   ],
+   "picto": "rue",
+   "arasaac": 2299
   },
   {
    "id": "statue",
@@ -453,7 +527,9 @@ export default {
    "vowels": [
     "a",
     "u"
-   ]
+   ],
+   "picto": "statue",
+   "arasaac": 8113
   },
   {
    "id": "lune",
@@ -462,7 +538,9 @@ export default {
    "audio": "word-lune",
    "vowels": [
     "u"
-   ]
+   ],
+   "picto": "lune",
+   "arasaac": 2933
   },
   {
    "id": "plume",
@@ -471,7 +549,9 @@ export default {
    "audio": "word-plume",
    "vowels": [
     "u"
-   ]
+   ],
+   "picto": "plume",
+   "arasaac": 5545
   },
   {
    "id": "jupe",
@@ -480,7 +560,9 @@ export default {
    "audio": "word-jupe",
    "vowels": [
     "u"
-   ]
+   ],
+   "picto": "jupe",
+   "arasaac": 2391
   },
   {
    "id": "bulle",
@@ -489,7 +571,9 @@ export default {
    "audio": "word-bulle",
    "vowels": [
     "u"
-   ]
+   ],
+   "picto": "bulle",
+   "arasaac": 8389
   },
   {
    "id": "nuage",
@@ -499,7 +583,9 @@ export default {
    "vowels": [
     "u",
     "a"
-   ]
+   ],
+   "picto": "nuage",
+   "arasaac": 2883
   },
   {
    "id": "ukulélé",
@@ -509,7 +595,9 @@ export default {
    "vowels": [
     "u",
     "é"
-   ]
+   ],
+   "picto": "ukulele",
+   "arasaac": 37887
   },
   {
    "id": "école",
@@ -519,7 +607,9 @@ export default {
    "vowels": [
     "é",
     "o"
-   ]
+   ],
+   "picto": "ecole",
+   "arasaac": 32446
   },
   {
    "id": "éléphant",
@@ -528,7 +618,9 @@ export default {
    "audio": "word-éléphant",
    "vowels": [
     "é"
-   ]
+   ],
+   "picto": "elephant",
+   "arasaac": 2372
   },
   {
    "id": "étoile",
@@ -537,7 +629,9 @@ export default {
    "audio": "word-étoile",
    "vowels": [
     "é"
-   ]
+   ],
+   "picto": "etoile",
+   "arasaac": 2752
   },
   {
    "id": "éponge",
@@ -546,7 +640,9 @@ export default {
    "audio": "word-éponge",
    "vowels": [
     "é"
-   ]
+   ],
+   "picto": "eponge",
+   "arasaac": 2749
   },
   {
    "id": "épée",
@@ -555,7 +651,9 @@ export default {
    "audio": "word-épée",
    "vowels": [
     "é"
-   ]
+   ],
+   "picto": "epee",
+   "arasaac": 7093
   },
   {
    "id": "été",
@@ -564,7 +662,9 @@ export default {
    "audio": "word-été",
    "vowels": [
     "é"
-   ]
+   ],
+   "picto": "ete",
+   "arasaac": 5604
   },
   {
    "id": "bébé",
@@ -573,7 +673,9 @@ export default {
    "audio": "word-bébé",
    "vowels": [
     "é"
-   ]
+   ],
+   "picto": "bebe",
+   "arasaac": 6060
   },
   {
    "id": "fée",
@@ -582,7 +684,9 @@ export default {
    "audio": "word-fée",
    "vowels": [
     "é"
-   ]
+   ],
+   "picto": "fee",
+   "arasaac": 5482
   },
   {
    "id": "thé",
@@ -591,7 +695,9 @@ export default {
    "audio": "word-thé",
    "vowels": [
     "é"
-   ]
+   ],
+   "picto": "the",
+   "arasaac": 29802
   },
   {
    "id": "clé",
@@ -600,7 +706,9 @@ export default {
    "audio": "word-clé",
    "vowels": [
     "é"
-   ]
+   ],
+   "picto": "cle",
+   "arasaac": 8153
   },
   {
    "id": "nez",
@@ -609,7 +717,9 @@ export default {
    "audio": "word-nez",
    "vowels": [
     "é"
-   ]
+   ],
+   "picto": "nez",
+   "arasaac": 2887
   },
   {
    "id": "pied",
@@ -618,7 +728,9 @@ export default {
    "audio": "word-pied",
    "vowels": [
     "é"
-   ]
+   ],
+   "picto": "pied",
+   "arasaac": 25327
   },
   {
    "id": "café",
@@ -628,7 +740,9 @@ export default {
    "vowels": [
     "a",
     "é"
-   ]
+   ],
+   "picto": "cafe",
+   "arasaac": 32398
   },
   {
    "id": "poupée",
@@ -637,70 +751,90 @@ export default {
    "audio": "word-poupée",
    "vowels": [
     "é"
-   ]
+   ],
+   "picto": "poupee",
+   "arasaac": 26238
   },
   {
    "id": "loup",
    "text": "loup",
    "image": "🐺",
    "audio": "word-loup",
-   "vowels": []
+   "vowels": [],
+   "picto": "loup",
+   "arasaac": 5892
   },
   {
    "id": "ours",
    "text": "ours",
    "image": "🧸",
    "audio": "word-ours",
-   "vowels": []
+   "vowels": [],
+   "picto": "ours",
+   "arasaac": 2488
   },
   {
    "id": "fleur",
    "text": "fleur",
    "image": "🌸",
    "audio": "word-fleur",
-   "vowels": []
+   "vowels": [],
+   "picto": "fleur",
+   "arasaac": 7104
   },
   {
    "id": "main",
    "text": "main",
    "image": "✋",
    "audio": "word-main",
-   "vowels": []
+   "vowels": [],
+   "picto": "main",
+   "arasaac": 2928
   },
   {
    "id": "dent",
    "text": "dent",
    "image": "🦷",
    "audio": "word-dent",
-   "vowels": []
+   "vowels": [],
+   "picto": "dent",
+   "arasaac": 10267
   },
   {
    "id": "pain",
    "text": "pain",
    "image": "🍞",
    "audio": "word-pain",
-   "vowels": []
+   "vowels": [],
+   "picto": "pain",
+   "arasaac": 2494
   },
   {
    "id": "mouche",
    "text": "mouche",
    "image": "🪰",
    "audio": "word-mouche",
-   "vowels": []
+   "vowels": [],
+   "picto": "mouche",
+   "arasaac": 2478
   },
   {
    "id": "feu",
    "text": "feu",
    "image": "🔥",
    "audio": "word-feu",
-   "vowels": []
+   "vowels": [],
+   "picto": "feu",
+   "arasaac": 4654
   },
   {
    "id": "bouche",
    "text": "bouche",
    "image": "👄",
    "audio": "word-bouche",
-   "vowels": []
+   "vowels": [],
+   "picto": "bouche",
+   "arasaac": 2663
   }
  ]
 };

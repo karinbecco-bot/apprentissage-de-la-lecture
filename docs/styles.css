@@ -33,3 +33,4 @@ button { font:inherit; color:inherit; cursor:pointer; touch-action:manipulation;
 .letter { font-family:"Andika","Comic Sans MS","Segoe UI",sans-serif; font-weight:600; }
 .prompt .letter { font-size:130px; }
 .choice.letter { font-size:96px; }
+.pic { object-fit:contain; pointer-events:none; }
