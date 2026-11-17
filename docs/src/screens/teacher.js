@@ -1,7 +1,7 @@
 // Vue enseignante (ouverte par un appui long de 2 s sur la mascotte). Le texte est permis ici.
 import { h, AVATARS } from '../dom.js';
 import { UNITS, UNIT_SESSIONS_NEEDED, UNIT_DAYS_NEEDED, LESSON_UNITS } from '../vowels.js';
-import { removeProfile, updateProfile, exportAll } from '../profiles.js';
+import { addProfile, removeProfile, updateProfile, exportAll } from '../profiles.js';
 import { newProgress } from '../mastery.js';
 
 export function render(root, ctx, params = {}) {
@@ -73,7 +73,7 @@ function renderPicker(root, ctx) {
     h('main', { class: 'screen teacher' },
       h('h1', {}, 'Choisir l\'image de l\'élève'),
       h('div', { class: 'grid' }, AVATARS.map((a) =>
-        h('button', { class: 'tile avatar-pick', onclick: () => ctx.navigate('placement', { avatar: a }) }, a))),
+        h('button', { class: 'tile avatar-pick', onclick: () => { ctx.setState(addProfile(ctx.getState(), a, 2, Date.now()).state); render(root, ctx); } }, a))),
       h('button', { class: 'btn', onclick: () => render(root, ctx) }, '↩️ Annuler')),
   );
 }

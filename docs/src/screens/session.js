@@ -3,20 +3,25 @@ import { h, picture } from '../dom.js';
 import { play } from '../audio.js';
 import { createSession } from '../session.js';
 import { updateProfile } from '../profiles.js';
+import { newProgress } from '../mastery.js';
 import { ensureVowels, lessonDue } from '../vowels.js';
-import { nextExercise } from '../../content/demo.js';
 
 export function render(root, ctx, { profileId, startedAt = Date.now() }) {
-  const profile = ctx.getState().profiles.find((p) => p.id === profileId);
+  let profile = ctx.getState().profiles.find((p) => p.id === profileId);
   if (!profile) return ctx.navigate('profiles');
+  // Seule l'étape 2 a de vrais contenus pour l'instant (les autres : exercices vides, sans voix) : on n'y envoie aucun enfant.
+  if (profile.progress.stage !== 2) {
+    profile = { ...profile, progress: newProgress(2) };
+    ctx.setState(updateProfile(ctx.getState(), profile));
+  }
   // Étape 2 : la leçon du jour (découverte + exercices) passe avant l'entraînement.
   if (profile.progress.stage === 2 && lessonDue(ensureVowels(profile).vowels, Date.now())) return ctx.navigate('lesson', { profileId });
 
   const session = createSession({
     profile,
     stageCount: ctx.stages.length,
-    nextExercise,
-    vowelMode: profile.progress.stage === 2,
+    nextExercise: () => { throw new Error('étape sans contenu'); }, // jamais appelé : seule l'étape 2 existe, en mode voyelles
+    vowelMode: true,
     sessionId: 's' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
     startedAt,
   });
