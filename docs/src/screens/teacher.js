@@ -1,6 +1,6 @@
 // Vue enseignante (ouverte par un appui long de 2 s sur la mascotte). Le texte est permis ici.
 import { h, AVATARS } from '../dom.js';
-import { UNITS, UNIT_SESSIONS_NEEDED, UNIT_DAYS_NEEDED } from '../vowels.js';
+import { UNITS, UNIT_SESSIONS_NEEDED, UNIT_DAYS_NEEDED, LESSON_UNITS } from '../vowels.js';
 import { removeProfile, updateProfile, exportAll } from '../profiles.js';
 import { newProgress } from '../mastery.js';
 
@@ -27,7 +27,7 @@ export function render(root, ctx, params = {}) {
       h('span', { class: 'av' }, p.avatar),
       h('span', {}, `${stage.icon} ${stage.title}${p.progress.finished ? ' · 🏆 parcours terminé' : ''}`),
       p.progress.stage === 2 && p.vowels
-        ? h('span', {}, `Voyelles : ${UNITS[Math.min(p.vowels.unit, UNITS.length - 1)].id.replaceAll('+', ' ')}${p.vowels.done ? ' · ✅ terminées' : ` · séances ${p.vowels.passed.length}/${UNIT_SESSIONS_NEEDED} · jours ${new Set(p.vowels.passed.map((x) => x.day)).size}/${UNIT_DAYS_NEEDED}`}`)
+        ? h('span', {}, `Voyelles : ${UNITS[Math.min(p.vowels.unit, UNITS.length - 1)].id.replaceAll('+', ' ')}${p.vowels.done ? ' · ✅ terminées' : LESSON_UNITS.includes(p.vowels.unit) ? ` · jour ${p.vowels.day ?? 1}/5` : ` · séances ${p.vowels.passed.length}/${UNIT_SESSIONS_NEEDED} · jours ${new Set(p.vowels.passed.map((x) => x.day)).size}/${UNIT_DAYS_NEEDED}`}`)
         : h('span', {}, `Séances réussies : ${p.progress.passedSessions.length}/2`),
       p.progress.flagged || (p.vowels && p.vowels.flagged) ? h('span', { class: 'flag' }, '🚩 en difficulté') : '',
       h('span', {}, `${p.history.length} séries · dernière : ${last ? new Date(last.at).toLocaleDateString('fr-BE') : '—'}`),

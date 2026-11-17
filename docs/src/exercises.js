@@ -8,7 +8,7 @@ const VOWELS = data.vowels;
 const WORDS = data.words;
 
 // Petit générateur pseudo-aléatoire reproductible (mulberry32).
-function rng(seed) {
+export function rng(seed) {
   let a = (seed * 2654435761) >>> 0;
   return () => {
     a = (a + 0x6d2b79f5) >>> 0;
@@ -19,7 +19,7 @@ function rng(seed) {
   };
 }
 
-function shuffle(list, rand) {
+export function shuffle(list, rand) {
   const a = [...list];
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(rand() * (i + 1));

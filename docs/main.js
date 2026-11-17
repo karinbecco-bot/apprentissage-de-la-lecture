@@ -3,6 +3,7 @@ import * as profilesScreen from './src/screens/profiles.js';
 import * as sessionScreen from './src/screens/session.js';
 import * as placementScreen from './src/screens/placement.js';
 import * as teacherScreen from './src/screens/teacher.js';
+import * as lessonScreen from './src/screens/lesson.js';
 
 const stages = await (await fetch('content/stages.json')).json();
 
@@ -17,7 +18,7 @@ const store = createStore(storage);
 let state = store.load();
 
 const root = document.getElementById('app');
-const screens = { profiles: profilesScreen, session: sessionScreen, placement: placementScreen, teacher: teacherScreen };
+const screens = { profiles: profilesScreen, session: sessionScreen, placement: placementScreen, teacher: teacherScreen, lesson: lessonScreen };
 
 const ctx = {
   stages,

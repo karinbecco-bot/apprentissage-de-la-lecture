@@ -1,5 +1,6 @@
 // Parcours des voyelles : unités, révisions espacées, validation d'une voyelle. Fonctions pures.
 import { buildExercise, TYPES } from './exercises.js';
+import { lessonPassed, DAYS } from './lesson.js';
 
 export const UNIT_SESSIONS_NEEDED = 3; // séances réussies (≥ 80 %), toutes différentes…
 export const UNIT_DAYS_NEEDED = 3; // …et réparties sur 3 jours différents
@@ -21,13 +22,17 @@ export const UNITS = [
   { id: 'a+i+o+u+é', vowels: ['a', 'i', 'o', 'u', 'é'] },
 ];
 const ORDER = ['a', 'i', 'o', 'u', 'é'];
+// Unités à une seule voyelle : leçon de 5 jours (un jour par séance). Les mélanges n'ont que de l'entraînement.
+export const LESSON_UNITS = UNITS.flatMap((u, i) => (u.vowels.length === 1 ? [i] : []));
 
 export function newVowelProgress() {
-  return { unit: 0, passed: [], boxes: {}, consecutiveFails: 0, flagged: false, done: false };
+  return { unit: 0, day: 1, lastLessonDay: null, passed: [], boxes: {}, consecutiveFails: 0, flagged: false, done: false };
 }
 
 export function ensureVowels(profile) {
-  return profile.vowels ? profile : { ...profile, vowels: newVowelProgress() };
+  if (!profile.vowels) return { ...profile, vowels: newVowelProgress() };
+  if (profile.vowels.day !== undefined && profile.vowels.lastLessonDay !== undefined) return profile;
+  return { ...profile, vowels: { day: 1, lastLessonDay: null, ...profile.vowels } };
 }
 
 export function bumpBox(boxes, vowel, ok) {
@@ -110,8 +115,25 @@ export function applyVowelSeries(vp, { correct, total, sessionId, at, results = 
   const days = new Set(v.passed.map((p) => p.day));
   if (v.passed.length < UNIT_SESSIONS_NEEDED || days.size < UNIT_DAYS_NEEDED) return { vowels: v, outcome: 'repeat' };
 
+  if (LESSON_UNITS.includes(v.unit)) return { vowels: v, outcome: 'repeat' }; // ici seule la leçon fait avancer
   v.passed = [];
   if (v.unit >= UNITS.length - 1) { v.done = true; return { vowels: v, outcome: 'unit-done' }; }
   v.unit += 1;
+  return { vowels: v, outcome: 'unit-done' };
+}
+
+// Une leçon est due si l'unité en a une et si la dernière date d'un autre jour (une seule leçon par jour).
+export function lessonDue(vp, now) {
+  return !vp.done && LESSON_UNITS.includes(vp.unit) && vp.lastLessonDay !== dayKey(now);
+}
+
+// Fin de la leçon du jour : réussie (70 % sans erreur) → jour suivant, et après le jour 5 → voyelle suivante.
+export function completeLesson(vp, { results, at }) {
+  const v = { ...vp, passed: [...vp.passed], lastLessonDay: dayKey(at) };
+  if (!lessonPassed(results)) return { vowels: v, outcome: 'day-repeat' };
+  if (v.day < DAYS.length) { v.day += 1; return { vowels: v, outcome: 'day-done' }; }
+  v.day = 1;
+  v.passed = [];
+  v.unit = Math.min(v.unit + 1, UNITS.length - 1);
   return { vowels: v, outcome: 'unit-done' };
 }
