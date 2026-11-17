@@ -1,0 +1,12 @@
+[
+  { "id": 0, "key": "ecouter-dire", "icon": "👂", "title": "Écouter et dire" },
+  { "id": 1, "key": "ecouter-sons", "icon": "🎵", "title": "Écouter les sons" },
+  { "id": 2, "key": "lettres-sons", "icon": "🔤", "title": "Lettres et sons" },
+  { "id": 3, "key": "fusion", "icon": "🔗", "title": "Fusionner" },
+  { "id": 4, "key": "mots", "icon": "🐱", "title": "Mots à déchiffrer" },
+  { "id": 5, "key": "phrases", "icon": "💬", "title": "Phrases simples" },
+  { "id": 6, "key": "sons-complexes", "icon": "🧩", "title": "Sons complexes" },
+  { "id": 7, "key": "mots-outils", "icon": "⭐", "title": "Mots-outils et pièges" },
+  { "id": 8, "key": "fluidite", "icon": "📖", "title": "Petits textes" },
+  { "id": 9, "key": "textes-p3", "icon": "🏫", "title": "Textes de 3e primaire" }
+]

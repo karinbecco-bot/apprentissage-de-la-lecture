@@ -1,0 +1,73 @@
+// Vue enseignante (ouverte par un appui long de 2 s sur la mascotte). Le texte est permis ici.
+import { h, AVATARS } from '../dom.js';
+import { removeProfile, updateProfile, exportAll } from '../profiles.js';
+import { newProgress } from '../mastery.js';
+
+export function render(root, ctx, params = {}) {
+  const state = ctx.getState();
+  const refresh = () => render(root, ctx);
+
+  if (params.picking) return renderPicker(root, ctx);
+
+  const rows = state.profiles.map((p) => {
+    const stage = ctx.stages[p.progress.stage] || { icon: '❓', title: 'Étape inconnue' };
+    const last = p.history[p.history.length - 1];
+    const select = h('select', {
+      'aria-label': 'Changer l\'étape',
+      onchange: (e) => {
+        if (confirm('Changer l\'étape remet à zéro la progression de cet élève sur cette étape. Continuer ?')) {
+          ctx.setState(updateProfile(ctx.getState(), { ...p, progress: newProgress(Number(e.target.value)) }));
+        }
+        refresh();
+      },
+    }, ctx.stages.map((s) => h('option', { value: s.id, selected: s.id === p.progress.stage ? 'selected' : false }, `${s.id} · ${s.title}`)));
+    return h('div', { class: 'row' },
+      h('span', { class: 'av' }, p.avatar),
+      h('span', {}, `${stage.icon} ${stage.title}${p.progress.finished ? ' · 🏆 parcours terminé' : ''}`),
+      h('span', {}, `Séances réussies : ${p.progress.passedSessions.length}/2`),
+      p.progress.flagged ? h('span', { class: 'flag' }, '🚩 en difficulté') : '',
+      h('span', {}, `${p.history.length} séries · dernière : ${last ? new Date(last.at).toLocaleDateString('fr-BE') : '—'}`),
+      select,
+      h('button', {
+        class: 'btn danger',
+        onclick: () => {
+          if (confirm('Supprimer cet élève et sa progression ?')) {
+            ctx.setState(removeProfile(ctx.getState(), p.id));
+            refresh();
+          }
+        },
+      }, 'Supprimer'),
+    );
+  });
+
+  root.replaceChildren(
+    h('main', { class: 'screen teacher' },
+      h('h1', {}, '🧑‍🏫 Vue enseignante'),
+      ctx.storageOk() ? '' : h('div', { class: 'banner' }, '⚠️ Ce navigateur ne permet pas d\'enregistrer les données : les élèves et leur progression seront perdus à la fermeture de la page. Sortez de la navigation privée ou autorisez le stockage du site.'),
+      state.recovered ? h('div', { class: 'banner' }, '⚠️ Les données enregistrées étaient illisibles : une copie de secours a été gardée dans le navigateur et la liste a été remise à zéro.') : '',
+      h('div', { class: 'toolbar' },
+        h('button', { class: 'btn', onclick: () => render(root, ctx, { picking: true }) }, '➕ Nouvel élève'),
+        h('button', { class: 'btn', onclick: () => download(exportAll(ctx.getState())) }, '⬇️ Exporter'),
+        h('button', { class: 'btn', onclick: () => ctx.navigate('profiles') }, '↩️ Retour')),
+      rows.length ? rows : h('p', {}, 'Aucun élève pour le moment.')),
+  );
+}
+
+function renderPicker(root, ctx) {
+  root.replaceChildren(
+    h('main', { class: 'screen teacher' },
+      h('h1', {}, 'Choisir l\'image de l\'élève'),
+      h('div', { class: 'grid' }, AVATARS.map((a) =>
+        h('button', { class: 'tile avatar-pick', onclick: () => ctx.navigate('placement', { avatar: a }) }, a))),
+      h('button', { class: 'btn', onclick: () => render(root, ctx) }, '↩️ Annuler')),
+  );
+}
+
+function download(text) {
+  const url = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
+  const a = h('a', { href: url, download: 'lecture-export.json' });
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
