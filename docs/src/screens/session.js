@@ -13,6 +13,7 @@ export function render(root, ctx, { profileId }) {
     profile,
     stageCount: ctx.stages.length,
     nextExercise,
+    vowelMode: profile.progress.stage === 2,
     sessionId: 's' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
     startedAt: Date.now(),
   });
@@ -30,9 +31,9 @@ export function render(root, ctx, { profileId }) {
     if (session.timeUp(Date.now())) return goodbye();
     const ex = session.current();
     const sound = h('button', { class: 'sound', 'aria-label': 'écouter', onclick: () => play(ex.prompt.audio) }, '🔊');
-    const prompt = h('div', { class: 'prompt' }, ex.prompt.image || '', sound);
+    const prompt = h('div', { class: 'prompt' }, ex.prompt.image || '', ex.prompt.letter ? h('span', { class: 'letter' }, ex.prompt.letter) : '', sound);
     const choices = ex.choices.map((c) =>
-      h('button', { class: 'choice', 'data-id': c.id, onclick: () => choose(c.id) }, c.image),
+      h('button', { class: c.letter ? 'choice letter' : 'choice', 'data-id': c.id, onclick: () => { if (c.audio) play(c.audio); choose(c.id); } }, c.letter || c.image || '🔊'),
     );
     root.replaceChildren(
       h('main', { class: 'screen' },
@@ -61,7 +62,7 @@ export function render(root, ctx, { profileId }) {
 
     if (r.seriesDone) ctx.setState(updateProfile(ctx.getState(), session.profile()));
     later(() => {
-      if (r.seriesDone && (r.outcome === 'next-stage' || r.outcome === 'finished')) {
+      if (r.seriesDone && (r.outcome === 'next-stage' || r.outcome === 'finished' || r.outcome === 'unit-done')) {
         overlay(r.outcome === 'finished' ? '🏆' : '🎉');
         later(next, 3000);
       } else next();

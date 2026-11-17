@@ -1,5 +1,6 @@
 // Vue enseignante (ouverte par un appui long de 2 s sur la mascotte). Le texte est permis ici.
 import { h, AVATARS } from '../dom.js';
+import { UNITS, UNIT_SESSIONS_NEEDED, UNIT_DAYS_NEEDED } from '../vowels.js';
 import { removeProfile, updateProfile, exportAll } from '../profiles.js';
 import { newProgress } from '../mastery.js';
 
@@ -16,7 +17,7 @@ export function render(root, ctx, params = {}) {
       'aria-label': 'Changer l\'étape',
       onchange: (e) => {
         if (confirm('Changer l\'étape remet à zéro la progression de cet élève sur cette étape. Continuer ?')) {
-          ctx.setState(updateProfile(ctx.getState(), { ...p, progress: newProgress(Number(e.target.value)) }));
+          ctx.setState(updateProfile(ctx.getState(), { ...p, vowels: undefined, progress: newProgress(Number(e.target.value)) }));
         }
         refresh();
       },
@@ -24,8 +25,10 @@ export function render(root, ctx, params = {}) {
     return h('div', { class: 'row' },
       h('span', { class: 'av' }, p.avatar),
       h('span', {}, `${stage.icon} ${stage.title}${p.progress.finished ? ' · 🏆 parcours terminé' : ''}`),
-      h('span', {}, `Séances réussies : ${p.progress.passedSessions.length}/2`),
-      p.progress.flagged ? h('span', { class: 'flag' }, '🚩 en difficulté') : '',
+      p.progress.stage === 2 && p.vowels
+        ? h('span', {}, `Voyelles : ${UNITS[Math.min(p.vowels.unit, UNITS.length - 1)].id.replaceAll('+', ' ')}${p.vowels.done ? ' · ✅ terminées' : ` · séances ${p.vowels.passed.length}/${UNIT_SESSIONS_NEEDED} · jours ${new Set(p.vowels.passed.map((x) => x.day)).size}/${UNIT_DAYS_NEEDED}`}`)
+        : h('span', {}, `Séances réussies : ${p.progress.passedSessions.length}/2`),
+      p.progress.flagged || (p.vowels && p.vowels.flagged) ? h('span', { class: 'flag' }, '🚩 en difficulté') : '',
       h('span', {}, `${p.history.length} séries · dernière : ${last ? new Date(last.at).toLocaleDateString('fr-BE') : '—'}`),
       select,
       h('button', {
