@@ -1,5 +1,5 @@
 // Contenu des voyelles : mots, images (picto = fichier images/<picto>.png, arasaac = numéro du pictogramme ARASAAC ;
-// image = émoji de secours) et voyelles contenues dans chaque mot.
+// image = émoji de secours), audio = fichier audio/<audio>.mp3 (voix Azure Charline) et voyelles contenues dans chaque mot.
 export default {
  "vowels": [
   {
@@ -30,7 +30,7 @@ export default {
    "id": "é",
    "letter": "é",
    "upper": "É",
-   "sound": "snd-é"
+   "sound": "snd-e"
   }
  ],
  "words": [
@@ -84,7 +84,7 @@ export default {
    "id": "araignée",
    "text": "araignée",
    "image": "🕷️",
-   "audio": "word-araignée",
+   "audio": "word-araignee",
    "vowels": [
     "a",
     "é"
@@ -174,7 +174,7 @@ export default {
    "id": "cinéma",
    "text": "cinéma",
    "image": "🎬",
-   "audio": "word-cinéma",
+   "audio": "word-cinema",
    "vowels": [
     "i",
     "é",
@@ -187,7 +187,7 @@ export default {
    "id": "île",
    "text": "île",
    "image": "🏝️",
-   "audio": "word-île",
+   "audio": "word-ile",
    "vowels": [
     "i"
    ],
@@ -368,7 +368,7 @@ export default {
    "id": "vélo",
    "text": "vélo",
    "image": "🚲",
-   "audio": "word-vélo",
+   "audio": "word-velo",
    "vowels": [
     "é",
     "o"
@@ -429,7 +429,7 @@ export default {
    "id": "gâteau",
    "text": "gâteau",
    "image": "🎂",
-   "audio": "word-gâteau",
+   "audio": "word-gateau",
    "vowels": [
     "a",
     "o"
@@ -441,7 +441,7 @@ export default {
    "id": "château",
    "text": "château",
    "image": "🏰",
-   "audio": "word-château",
+   "audio": "word-chateau",
    "vowels": [
     "a",
     "o"
@@ -591,7 +591,7 @@ export default {
    "id": "ukulélé",
    "text": "ukulélé",
    "image": "🪕",
-   "audio": "word-ukulélé",
+   "audio": "word-ukulele",
    "vowels": [
     "u",
     "é"
@@ -603,7 +603,7 @@ export default {
    "id": "école",
    "text": "école",
    "image": "🏫",
-   "audio": "word-école",
+   "audio": "word-ecole",
    "vowels": [
     "é",
     "o"
@@ -615,7 +615,7 @@ export default {
    "id": "éléphant",
    "text": "éléphant",
    "image": "🐘",
-   "audio": "word-éléphant",
+   "audio": "word-elephant",
    "vowels": [
     "é"
    ],
@@ -626,7 +626,7 @@ export default {
    "id": "étoile",
    "text": "étoile",
    "image": "⭐",
-   "audio": "word-étoile",
+   "audio": "word-etoile",
    "vowels": [
     "é"
    ],
@@ -637,7 +637,7 @@ export default {
    "id": "éponge",
    "text": "éponge",
    "image": "🧽",
-   "audio": "word-éponge",
+   "audio": "word-eponge",
    "vowels": [
     "é"
    ],
@@ -648,7 +648,7 @@ export default {
    "id": "épée",
    "text": "épée",
    "image": "⚔️",
-   "audio": "word-épée",
+   "audio": "word-epee",
    "vowels": [
     "é"
    ],
@@ -659,7 +659,7 @@ export default {
    "id": "été",
    "text": "été",
    "image": "☀️",
-   "audio": "word-été",
+   "audio": "word-ete",
    "vowels": [
     "é"
    ],
@@ -670,7 +670,7 @@ export default {
    "id": "bébé",
    "text": "bébé",
    "image": "👶",
-   "audio": "word-bébé",
+   "audio": "word-bebe",
    "vowels": [
     "é"
    ],
@@ -681,7 +681,7 @@ export default {
    "id": "fée",
    "text": "fée",
    "image": "🧚",
-   "audio": "word-fée",
+   "audio": "word-fee",
    "vowels": [
     "é"
    ],
@@ -692,7 +692,7 @@ export default {
    "id": "thé",
    "text": "thé",
    "image": "🍵",
-   "audio": "word-thé",
+   "audio": "word-the",
    "vowels": [
     "é"
    ],
@@ -703,7 +703,7 @@ export default {
    "id": "clé",
    "text": "clé",
    "image": "🔑",
-   "audio": "word-clé",
+   "audio": "word-cle",
    "vowels": [
     "é"
    ],
@@ -736,7 +736,7 @@ export default {
    "id": "café",
    "text": "café",
    "image": "☕",
-   "audio": "word-café",
+   "audio": "word-cafe",
    "vowels": [
     "a",
     "é"
@@ -748,7 +748,7 @@ export default {
    "id": "poupée",
    "text": "poupée",
    "image": "🪆",
-   "audio": "word-poupée",
+   "audio": "word-poupee",
    "vowels": [
     "é"
    ],
